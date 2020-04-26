@@ -1,0 +1,46 @@
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+}
+
+@mixin media($size, $orientation: "horizontal") {
+  $feature: null;
+  @if ($orientation == "horizontal") {
+    $feature: max-width;
+  } @else if ($orientation == "vertical") {
+    $feature: max-height;
+  } @else {
+    @error 'Invalid orientation: "#{$orientation}"';
+  }
+
+  @media only screen and ($feature: $size) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @include media($mobile-breakpoint) {
+    @content;
+  }
+}
+
+@mixin unordered-list($inline: false) {
+  display: flex;
+  align-items: center;
+
+  @if not $inline {
+    flex-direction: column;
+  }
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin children-gap($gap) {
+  & > *:not(:last-child) {
+    margin-right: $gap;
+    @content;
+  }
+}

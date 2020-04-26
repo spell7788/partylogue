@@ -1,0 +1,22 @@
+@import "~normalize.css";
+@import "~tippy.js/themes/light.css";
+
+@import "./abstracts/variables";
+@import "./abstracts/mixins";
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+*, *:before, *:after, html {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  overflow: hidden;
+  font-family: 'Ubuntu Mono', monospace;
+  color: $font-color;
+}

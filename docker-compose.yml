@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  client:
+    build:
+      dockerfile: ./docker/prod/Dockerfile
+      context: ./client
+    depends_on:
+      - server
+    ports:
+      - "80:80"
+
+  server:
+    build:
+      dockerfile: ./docker/prod/Dockerfile
+      context: ./server
+    env_file:
+      ./server/docker/prod/.env
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  db:
+    image: mongo
+    volumes:
+      - db_data:/data/db
+
+volumes:
+  db_data:
