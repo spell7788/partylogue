@@ -31,4 +31,4 @@ export const OBTAIN_ADMIN_CODE = env.get("OBTAIN_ADMIN_CODE")
   .asString();
 
 export const MESSAGE_MENTION_SYMBOL = env.get("MESSAGE_MENTION_SYMBOL")
-  .asString();
+  .default("@").asString();
