@@ -20,7 +20,5 @@ yarn-error.log*
 *.sw?
 
 # local env files
-.env.local
-.env.*.local
-
-server/docker/**/.env
+.env*
+!/client/.env

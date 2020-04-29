@@ -4,12 +4,11 @@ WORKDIR /app
 
 COPY package*.json yarn.lock tsconfig.json ./
 
-RUN npm install typescript --no-save --no-package-lock
+RUN yarn install --frozen-lockfile
 
 COPY . .
 
-RUN ./node_modules/.bin/tsc \
-    && rm -rf node_modules
+RUN ./node_modules/.bin/tsc
 
 # ---
 
@@ -21,6 +20,6 @@ COPY --from=build-stage /app .
 
 RUN yarn install --frozen-lockfile
 
-EXPOSE 80
+EXPOSE 8000
 
 CMD [ "yarn", "start" ]

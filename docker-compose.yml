@@ -2,8 +2,8 @@ version: "3.7"
 
 services:
   client:
+    restart: always
     build:
-      dockerfile: ./docker/prod/Dockerfile
       context: ./client
     depends_on:
       - server
@@ -11,17 +11,18 @@ services:
       - "80:80"
 
   server:
+    restart: always
     build:
-      dockerfile: ./docker/prod/Dockerfile
       context: ./server
     env_file:
-      ./server/docker/prod/.env
+      ./server/.env.production
     ports:
       - "8000:8000"
     depends_on:
       - db
 
   db:
+    restart: always
     image: mongo
     volumes:
       - db_data:/data/db

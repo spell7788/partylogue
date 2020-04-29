@@ -3,7 +3,7 @@ version: "3.7"
 services:
   client:
     build:
-      dockerfile: ./docker/dev/Dockerfile
+      dockerfile: ./Dockerfile.dev
     ports:
       - "8080:8080"
     volumes:
@@ -12,7 +12,7 @@ services:
 
   server:
     build:
-      dockerfile: ./docker/dev/Dockerfile
+      dockerfile: ./Dockerfile.dev
     ports:
       - "8000:8000"
       - "9229:9229"
@@ -20,4 +20,4 @@ services:
       - "./server:/app"
       - "/app/node_modules/"
     env_file:
-      ./server/docker/dev/.env
+      ./server/.env.development
